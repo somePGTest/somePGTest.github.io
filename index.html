@@ -40,7 +40,7 @@
   </div>
 
   <script>
-    var CLIENT_ID = '42zjexze6mfpf7x';
+    var CLIENT_ID = 'sbr5of2sbx8zzvg'; 
 
     // Parses the url and gets the access token if it is in the urls hash
     function getAccessTokenFromUrl() {
@@ -87,7 +87,7 @@
 
       // Set the login anchors href using dbx.getAuthenticationUrl()
       var dbx = new Dropbox({ clientId: CLIENT_ID });
-      var authUrl = dbx.getAuthenticationUrl('https://somepgtest.github.io//auth');
+      var authUrl = dbx.getAuthenticationUrl('https://somepgtest.github.io/');
       document.getElementById('authlink').href = authUrl;
     }
   </script>
