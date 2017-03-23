@@ -7,7 +7,22 @@ app.controller("GalerijaCtrl", function($scope) {
         var tmpPic = 0;
         var numOfPic = 0;
 		
-		var dropboxToken = "qlcoiIliLZAAAAAAAAAAG1xwUQY5ZPycWJGSPb29yjCXRLb6-uGicDETKwL44WAc";
+		
+		// //uzet token, provjeriti da li je dao prava ako je unauthorized treba ispisati :D
+		// // Parses the url and gets the access token if it is in the urls hash
+		// function getAccessTokenFromUrl() {
+		 // return utils.parseQueryString(window.location.hash).access_token;
+		// }
+
+		// // If the user was just redirected from authenticating, the urls hash will
+		// // contain the access token.
+		// function isAuthenticated() {
+		  // return !!getAccessTokenFromUrl();
+		// }
+		
+		
+		//"qlcoiIliLZAAAAAAAAAAG1xwUQY5ZPycWJGSPb29yjCXRLb6-uGicDETKwL44WAc";
+		var dropboxToken = utils.parseQueryString(window.location.hash).access_token;
 		
         $scope.downloadFilePaths = function () {
 
