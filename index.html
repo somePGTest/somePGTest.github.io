@@ -1,47 +1,33 @@
 ﻿<!doctype html>
 <html>
 <head>
-  <title>Dropbox JavaScript SDK</title>
+  <title>Personal Photo Gallery</title>
   
   <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
   <script src="controllers/utils.js"></script>
-  
+  <script src="assets/js/jquery-2.2.3.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script> -->
+	
+	<script src="controllers/HomeCtrl.js"></script>
+	
 </head>
 <body>
- <h2>Novo</h2>
-  <div class="container main">
-    <div>
-      <p>This example takes the user through Dropbox's API OAuth flow using <code>Dropbox.getAuthenticationUrl()</code> method [<a href="http://dropbox.github.io/dropbox-sdk-js/Dropbox.html#getAuthenticationUrl">docs</a>] and then uses the generated access token to list the contents of their root directory.</p>
-      <a href="" id="authlink" class="button">Authenticate</a>
-      
-    </div>
-
-    
-
-  <script>
-    var CLIENT_ID = 'sbr5of2sbx8zzvg'; 
-
-    // Parses the url and gets the access token if it is in the urls hash
-    function getAccessTokenFromUrl() {
-     return utils.parseQueryString(window.location.hash).access_token;
-    }
-
-    // If the user was just redirected from authenticating, the urls hash will
-    // contain the access token.
-    function isAuthenticated() {
-      return !!getAccessTokenFromUrl();
-    }
-
-    if (isAuthenticated()) {
-		
-      var dbx = new Dropbox({ accessToken: getAccessTokenFromUrl() });
-	  
-    } else {
-		
-      var dbx = new Dropbox({ clientId: CLIENT_ID });
-      var authUrl = dbx.getAuthenticationUrl('https://somepgtest.github.io/');
-      document.getElementById('authlink').href = authUrl;
-    }
-  </script>
+	<div ng-app="PhotoGallery" ng-controller="HomeCtrl">
+		<div class="wide">
+			<div class="container">         
+				<h1 align="center" style="margin-top: 15%;">Personal photo gallery</h1>
+				<button id="dboxLoginBtn" type="button" ng-click="goToDropbox()" class="logBtn btn-warning btn-lg">Connect to Dropbox</button>
+				<div class="footer">			
+					<p style="display:inline">Copyright © 2017 Benjamin Beganović &nbsp &nbsp</p>
+					<a href="https://github.com/benjaminBeganovic/benjaminBeganovic.github.io">Check this out on GitHub</a>
+				</div>		
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html>
+<head>
+  <title>Gallery</title>  
+  
+  <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+  <script src="controllers/utils.js"></script>
+  <script src="assets/js/jquery-2.2.3.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	
+	<script src="controllers/GalerijaCtrl.js"></script>
+	<!-- <script src="controllers/router.js"></script> -->
+  
+  
+  
+  
+</head>
+<body>
+  
+  <div ng-app="PhotoGallery" ng-controller="GalerijaCtrl">
+    
+  
+	
+  <div class="pozadina">
+  <a id="userProfile" class="rightL" href=""><h3 style="margin: 10px 10px 0px 0px; padding: 0;" id="userName">User</h3></a>
+    <h2 id="galleryTitle" align="center" style="margin: 5px 0px 5px 0px; padding: 0;">Loading...</h2>
+
+    <div id="photoView" class="centerDiv well" style="width:720px; display: none;">
+        <img id="slikaId" class="img-responsive" src="" alt="loading..." style="width:700px;height:380px;">
+        <h4 id="picTitle" style="text-align: center;">loading...</h4>
+        <button id="prevBtn" ng-click="previousPic()" class="btn btn-info"><<</button>
+        <button id="nextBtn" class="pull-right btn btn-info" ng-click="nextPic()">>></button>
+    
+	</div>
+	
+	<div class="centerDiv well" style="width:720px;">
+    <h3 align="center">Upload photos</h3>
+    <form>
+        <div class="fileUpload btn btn-info">
+            <span>&nbsp Browse &nbsp</span>
+            <input id="slikeZaUpload" type="file" accept="image/*" class="upload" multiple ng-click="refresh()" ng-model="image" onchange="angular.element(this).scope().uploadImage()" />
+        </div>
+        <input id="uploadFile" placeholder="Nothing selected" disabled="disabled" style="width:80%;" /><br>
+
+
+        <div class="input-group">
+
+            <span class="input-group-btn">
+                <button style="width:90px; margin-left: 10px; margin-right: 10px;" class="btn btn-info" ng-click="uploadFiles()">Upload</button>
+            </span>
+            <h4 id="procenat"></h4>
+        </div>
+    </form>
+	</div>
+	
+	
+	<div id="listPhoto" class="centerDiv well" style="width:720px; display: none;">
+		
+		<h3> List of photos
+			<span style="display: inline-block;">
+				<button class="btn btn-info" ng-click="saveListToJson()">Save list to Json</button>
+			</span>
+		</h3>
+		
+		<hr>
+        <div class="panel-group">
+            <div id="titlovi" ng-repeat="t in lista_titleova track by $index">
+                <div class="panel panel-default" ng-attr-id="{{t}}" style="margin-bottom: 3%;">
+                    <div class="panel-heading naslov">
+                        <button class="btn btn-info" style="margin-right: 2%;" ng-click="deleteFun(t)">Remove</button>
+                        {{t}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+
+    <p>{{polje}}</p>
+	
+	<div class="footer2">			
+					<p style="display:inline">Copyright © 2017 Benjamin Beganović &nbsp &nbsp</p>
+					<a href="https://github.com/benjaminBeganovic/benjaminBeganovic.github.io">Check this out on GitHub</a>
+				</div>
+</div>
+</div>
+</body>
+</html>
